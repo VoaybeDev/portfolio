@@ -3,9 +3,9 @@ export default function Hero() {
     display: 'inline-flex',
     alignItems: 'center',
     gap: '0.5rem',
-    padding: '0.8rem 1.8rem',
+    padding: '0.75rem 1.5rem',
     fontFamily: 'Space Mono, monospace',
-    fontSize: '0.78rem',
+    fontSize: '0.75rem',
     fontWeight: '700',
     letterSpacing: '0.08em',
     textDecoration: 'none',
@@ -14,7 +14,7 @@ export default function Hero() {
     color: 'var(--accent)',
     background: 'rgba(110,240,200,0.05)',
     transition: 'all 0.25s',
-    cursor: 'none',
+    justifyContent: 'center',
   };
 
   const handleOver = (e) => {
@@ -30,6 +30,12 @@ export default function Hero() {
     e.currentTarget.style.transform = 'translateY(0)';
     e.currentTarget.style.boxShadow = 'none';
   };
+
+  const stats = [
+    { num: '22', label: 'Ans' },
+    { num: '6+', label: 'Projets deployes' },
+    { num: '3', label: 'Langues parlees' },
+  ];
 
   return (
     <section id="hero">
@@ -56,17 +62,26 @@ export default function Hero() {
             Telecharger CV
           </a>
         </div>
+
+        {/* Stats visibles uniquement sur mobile */}
+        <div className="hero-stats-mobile">
+          {stats.map((s) => (
+            <div className="stat-item" key={s.label}>
+              <span className="stat-num">{s.num}</span>
+              <span className="stat-label">{s.label}</span>
+            </div>
+          ))}
+        </div>
       </div>
+
       <div className="hero-scroll">
         <div className="scroll-line" />
         Scroll
       </div>
+
+      {/* Stats visibles uniquement sur desktop */}
       <div className="hero-stats">
-        {[
-          { num: '23', label: 'Ans' },
-          { num: '6+', label: 'Projets deployes' },
-          { num: '3', label: 'Langues parlees' },
-        ].map((s) => (
+        {stats.map((s) => (
           <div className="stat-item" key={s.label}>
             <span className="stat-num">{s.num}</span>
             <span className="stat-label">{s.label}</span>

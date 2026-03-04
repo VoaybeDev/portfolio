@@ -10,6 +10,7 @@ const links = [
 
 export default function Navbar() {
   const [active, setActive] = useState('');
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const sections = document.querySelectorAll('section[id]');
@@ -24,16 +25,32 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  const handleLink = () => setMenuOpen(false);
+
   return (
-    <nav className="navbar">
-      <a href="#hero" className="nav-logo">JB.dev</a>
-      <div className="nav-links">
+    <>
+      <nav className="navbar">
+        <a href="#hero" className="nav-logo">JB.dev</a>
+        <div className="nav-links">
+          {links.map((l) => (
+            <a key={l.href} href={l.href} className={active === l.href.replace('#', '') ? 'active' : ''}>
+              {l.label}
+            </a>
+          ))}
+        </div>
+        <button className="nav-hamburger" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
+          <span style={{ transform: menuOpen ? 'rotate(45deg) translate(5px, 5px)' : 'none' }} />
+          <span style={{ opacity: menuOpen ? 0 : 1 }} />
+          <span style={{ transform: menuOpen ? 'rotate(-45deg) translate(5px, -5px)' : 'none' }} />
+        </button>
+      </nav>
+      <div className={'nav-mobile' + (menuOpen ? ' open' : '')}>
         {links.map((l) => (
-          <a key={l.href} href={l.href} className={active === l.href.replace('#', '') ? 'active' : ''}>
+          <a key={l.href} href={l.href} onClick={handleLink} className={active === l.href.replace('#', '') ? 'active' : ''}>
             {l.label}
           </a>
         ))}
       </div>
-    </nav>
+    </>
   );
 }
