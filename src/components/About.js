@@ -4,17 +4,16 @@ export default function About() {
       <div className="section-wrapper">
         <div className="section-header">
           <span className="section-num">01 /</span>
-          <h2 className="section-title">À propos</h2>
+          <h2 className="section-title">A propos</h2>
           <div className="section-line" />
         </div>
-
         <div className="about-grid">
           <div className="about-text">
             <p>
               Je m'appelle <strong>RALAIJOMA Fanambinantsoa Jean Baptiste</strong>,
               développeur de 23 ans basé à Fianarantsoa, Madagascar. J'ai terminé
               ma Licence en développement d'applications à l'
-              <strong>École de Management et d'Innovation Technologique (EMIT)</strong>.
+              <strong>École de Management et d'Innovation Technologique (EMIT Fianarantsoa)</strong>.
             </p>
             <p>
               Je suis spécialisé dans la création d'applications web et mobiles
@@ -29,27 +28,25 @@ export default function About() {
               collecte à leur exploitation.
             </p>
           </div>
-
           <div className="info-card">
             {[
-              { key: 'Nom',          val: 'Jean Baptiste Ralaijoma'                },
-              { key: 'Âge',          val: '23 ans'                                 },
-              { key: 'Localisation', val: 'Fianarantsoa, Madagascar'               },
-              { key: 'Email',        val: 'mbinanafana1@gmail.com', isLink: true   },
-              { key: 'Téléphone',    val: '+261 38 36 683 36'                       },
-              { key: 'Disponibilité',val: '✓ Disponible', highlight: true          },
-              { key: 'Langues',      val: 'FR · EN · MG'                           },
-            ].map(r => (
+              { key: 'Nom complet', val: 'RALAIJOMA Fanambinantsoa Jean Baptiste' },
+              { key: 'Date de naissance', val: '06 / 09 / 2002' },
+              { key: 'Lieu de naissance', val: 'Ikalamavony' },
+              { key: 'Adresse', val: 'Ivory avaratra, Fianarantsoa' },
+              { key: 'Email', val: 'mbinanafana1@gmail.com', isLink: true },
+              { key: 'Telephone', val: '+261 38 36 683 36' },
+              { key: 'Disponibilite', val: '✓ Disponible', highlight: true },
+              { key: 'Langues', val: 'FR · EN · MG' },
+            ].map((r) => (
               <div className="info-row" key={r.key}>
                 <span className="info-key">{r.key}</span>
                 {r.isLink ? (
                   <span className="info-val">
-                    <a href={`mailto:${r.val}`}>{r.val}</a>
+                    <a href={'mailto:' + r.val}>{r.val}</a>
                   </span>
                 ) : (
-                  <span className={`info-val${r.highlight ? ' available' : ''}`}>
-                    {r.val}
-                  </span>
+                  <span className={'info-val' + (r.highlight ? ' available' : '')}>{r.val}</span>
                 )}
               </div>
             ))}
