@@ -42,8 +42,8 @@ export default function CV({ onClose }) {
           <div className="cv-h-left">
             <div className="cv-pre">Full Stack Developer</div>
             <h1 className="cv-name">
-              FANAMBINANTSOA<br />
-              <span className="cv-line2">RALAIJOMA</span>
+              RALAIJOMA<br />
+              <span className="cv-line2">FANAMBINANTSOA</span>
             </h1>
             <div className="cv-prenom-tag">Jean Baptiste</div>
             <div className="cv-sub">React &nbsp;-&nbsp; Node.js &nbsp;-&nbsp; Laravel &nbsp;-&nbsp; Docker &nbsp;-&nbsp; Vercel</div>
