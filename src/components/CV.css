@@ -1,3 +1,8 @@
+/* ============================================
+   CV.css — coller dans : src/components/CV.css
+   FIXES : coupure écran + fond blanc impression
+   ============================================ */
+
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap');
 
 /* ── Variables ── */
@@ -56,7 +61,6 @@
   background: var(--cv-neon);
   color: var(--cv-bg);
 }
-
 .cv-btn-print:hover {
   background: #00c8e0;
   box-shadow: 0 0 20px rgba(0, 229, 255, 0.45);
@@ -68,7 +72,6 @@
   color: var(--cv-pink);
   border: 1px solid var(--cv-pink);
 }
-
 .cv-btn-close:hover {
   background: rgba(255, 45, 120, 0.1);
   transform: translateY(-1px);
@@ -76,16 +79,24 @@
 
 /* ══════════════════════════════════════════
    FEUILLE A4
+   ✅ FIX 1 : min-height au lieu de height fixe
+              → plus de coupure sur écran
+   ✅ FIX 2 : print-color-adjust: exact
+              → fond noir conservé à l'impression
    ══════════════════════════════════════════ */
 .cv-sheet {
   background: var(--cv-bg);
   width: 210mm;
-  height: 297mm;          /* hauteur fixe = 1 page exacte */
-  overflow: hidden;       /* coupe tout ce qui dépasse */
+  min-height: 297mm;        /* ✅ min-height = pas de coupure */
   position: relative;
   box-shadow: 0 0 60px rgba(0, 229, 255, 0.12);
   font-family: 'Outfit', sans-serif;
   color: var(--cv-text);
+
+  /* ✅ Force l'impression des backgrounds et couleurs */
+  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
+  color-adjust: exact !important;
 }
 
 /* Ambiance background */
@@ -130,7 +141,6 @@
   align-items: center;
   gap: 8px;
 }
-
 .cv-pre::before {
   content: '';
   display: inline-block;
@@ -146,7 +156,6 @@
   color: var(--cv-white);
   text-shadow: 0 0 40px rgba(0, 229, 255, .2);
 }
-
 .cv-line2 { color: var(--cv-neon); }
 
 .cv-prenom-tag {
@@ -207,7 +216,6 @@
   font-size: 10.5px;
   color: var(--cv-muted);
 }
-
 .cv-dot { color: var(--cv-neon); }
 .cv-ci a { color: var(--cv-neon); text-decoration: none; }
 
@@ -237,7 +245,6 @@
   letter-spacing: 2px;
   color: var(--cv-white);
 }
-
 .cv-sec-line { flex: 1; height: 1px; background: var(--cv-border); }
 .cv-sec-num  { font-size: 8.5px; color: var(--cv-pink); letter-spacing: 1px; font-weight: 600; }
 
@@ -266,7 +273,6 @@
   position: relative;
   overflow: hidden;
 }
-
 .cv-proj-item::before {
   content: '';
   position: absolute;
@@ -276,7 +282,7 @@
 }
 
 .cv-proj-title { font-size: 11.5px; font-weight: 600; color: var(--cv-white); margin-bottom: 2px; }
-.cv-proj-desc  { font-size: 9.5px;  color: var(--cv-muted); line-height: 1.4; margin-bottom: 5px; }
+.cv-proj-desc  { font-size: 9.5px; color: var(--cv-muted); line-height: 1.4; margin-bottom: 5px; }
 .cv-proj-chips { display: flex; flex-wrap: wrap; gap: 3px; }
 
 .cv-chip {
@@ -318,11 +324,9 @@
 
 .cv-skill-row { display: flex; flex-direction: column; gap: 2px; margin-bottom: 6px; }
 .cv-skill-row:last-child { margin-bottom: 0; }
-
 .cv-skill-top { display: flex; justify-content: space-between; font-size: 10.5px; }
 .cv-skill-nm  { color: var(--cv-text); }
 .cv-skill-pc  { color: var(--cv-pink); font-size: 8.5px; }
-
 .cv-skill-track { height: 2px; background: var(--cv-border); border-radius: 1px; }
 .cv-skill-fill  { height: 100%; background: linear-gradient(90deg, var(--cv-neon), var(--cv-purple)); border-radius: 1px; }
 
@@ -335,7 +339,6 @@
   border-radius: 4px;
   color: var(--cv-muted);
 }
-
 .cv-tool.hi {
   border-color: rgba(0, 229, 255, .3);
   color: var(--cv-neon);
@@ -351,7 +354,6 @@
   font-size: 10.5px;
   color: var(--cv-text);
 }
-
 .cv-lang-row:last-child { border-bottom: none; }
 .cv-llvl { font-size: 7.5px; color: var(--cv-pink); letter-spacing: 1px; }
 
@@ -364,7 +366,6 @@
   position: relative;
   overflow: hidden;
 }
-
 .cv-edu-card::before {
   content: '';
   position: absolute;
@@ -382,9 +383,8 @@
   padding-top: 9px;
   border-top: 1px solid var(--cv-border);
 }
-
-.cv-bac-deg    { font-size: 10px;  font-weight: 600; color: var(--cv-white); }
-.cv-bac-school { font-size: 9px;   color: var(--cv-muted); margin-top: 2px; }
+.cv-bac-deg    { font-size: 10px; font-weight: 600; color: var(--cv-white); }
+.cv-bac-school { font-size: 9px;  color: var(--cv-muted); margin-top: 2px; }
 
 .cv-bac-mention {
   display: inline-block;
@@ -398,38 +398,82 @@
 }
 
 /* ══════════════════════════════════════════
-   IMPRESSION — PDF 1 PAGE STRICTE
+   IMPRESSION — PDF PROPRE
+   ✅ Fond noir forcé sur tous les éléments
    ══════════════════════════════════════════ */
 @media print {
-  /* Cacher tout le reste du portfolio */
+
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  /* ✅ Force les couleurs sur TOUT */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  /* Cacher tout le portfolio */
   body > * { display: none !important; }
 
-  /* Afficher l'overlay */
-  body > .cv-overlay,
-  #root .cv-overlay {
-    display: flex !important;
+  /* Afficher uniquement le CV */
+  #root { display: block !important; }
+  #root > * { display: none !important; }
+  #root .cv-overlay { display: flex !important; }
+
+  .cv-overlay {
     position: static !important;
-    background: none !important;
+    background: transparent !important;
     backdrop-filter: none !important;
     padding: 0 !important;
+    overflow: visible !important;
   }
 
   /* Cacher les boutons */
   .no-print,
   .cv-actions { display: none !important; }
 
-  /* La feuille prend toute la page */
+  /* La feuille = exactement 1 page */
   .cv-sheet {
     box-shadow: none !important;
     width: 210mm !important;
-    height: 297mm !important;
-    overflow: hidden !important;
-    page-break-after: avoid;
-    page-break-inside: avoid;
+    min-height: 297mm !important;
+    background: #060610 !important;      /* ✅ fond noir forcé */
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 
-  @page {
-    size: A4;
-    margin: 0;
+  /* ✅ Tous les fonds forcés à l'impression */
+  .cv-r-card,
+  .cv-profile-box,
+  .cv-proj-item,
+  .cv-edu-card {
+    background: #0d0d1f !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
+
+  .cv-chip {
+    background: rgba(139, 92, 246, .15) !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .cv-tool.hi {
+    background: rgba(0, 229, 255, .05) !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .cv-bac-mention,
+  .cv-avail {
+    background: rgba(0, 229, 255, .08) !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Pas de coupure entre les projets */
+  .cv-proj-item { page-break-inside: avoid; }
 }
