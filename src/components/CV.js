@@ -1,5 +1,9 @@
+// ============================================
+//  CV.js — coller dans : src/components/CV.js
+// ============================================
+
 import React, { useRef, useEffect } from 'react';
-import './CV.css';
+import '../CV.css';
 
 export default function CV({ onClose }) {
   const sheetRef = useRef();
@@ -21,6 +25,17 @@ export default function CV({ onClose }) {
 
   const handlePrint = () => window.print();
 
+  // Ferme l'onglet et retourne au portfolio
+  const handleClose = () => {
+    if (window.opener) {
+      window.close();
+    } else if (onClose) {
+      onClose();
+    } else {
+      window.history.back();
+    }
+  };
+
   return (
     <div className="cv-overlay">
 
@@ -29,7 +44,7 @@ export default function CV({ onClose }) {
         <button className="cv-btn cv-btn-print" onClick={handlePrint}>
           ⬇ Télécharger PDF
         </button>
-        <button className="cv-btn cv-btn-close" onClick={onClose}>
+        <button className="cv-btn cv-btn-close" onClick={handleClose}>
           ✕ Fermer
         </button>
       </div>
@@ -42,8 +57,8 @@ export default function CV({ onClose }) {
           <div className="cv-h-left">
             <div className="cv-pre">Full Stack Developer</div>
             <h1 className="cv-name">
-              RALAIJOMA<br />
-              <span className="cv-line2">FANAMBINANTSOA</span>
+              FANAMBINANTSOA<br />
+              <span className="cv-line2">RALAIJOMA</span>
             </h1>
             <div className="cv-prenom-tag">Jean Baptiste</div>
             <div className="cv-sub">React &nbsp;-&nbsp; Node.js &nbsp;-&nbsp; Laravel &nbsp;-&nbsp; Docker &nbsp;-&nbsp; Vercel</div>
