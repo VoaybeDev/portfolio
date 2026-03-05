@@ -41,7 +41,7 @@ export default function About() {
               { key: 'Email',         val: 'mbinanafana1@gmail.com', isLink: true },
               { key: 'Telephone',     val: '+261 38 36 683 36' },
               { key: 'Disponibilite', val: '✓ Disponible', highlight: true },
-              { key: 'Langues',       val: 'FR · EN · MG' },
+              { key: 'Langues',       val: '🇫🇷 FR · 🇬🇧 EN · 🇲🇬 MG' },
             ].map((r) => (
               <div className="info-row" key={r.key}>
                 <span className="info-key">{r.key}</span>
