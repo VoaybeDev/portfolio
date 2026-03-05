@@ -32,7 +32,7 @@ export default function Hero() {
   };
 
   const stats = [
-    { num: '22', label: 'Ans' },
+    { num: '23', label: 'Ans' },
     { num: '6+', label: 'Projets deployes' },
     { num: '3', label: 'Langues parlees' },
   ];
