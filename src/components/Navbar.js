@@ -27,6 +27,13 @@ export default function Navbar() {
 
   const handleLink = () => setMenuOpen(false);
 
+  // ✅ Ouvre le CV dans un nouvel onglet proprement
+  const openCV = (e) => {
+    e.preventDefault();
+    window.open('/cv', '_blank', 'noopener');
+    setMenuOpen(false);
+  };
+
   return (
     <>
       <nav className="navbar">
@@ -43,15 +50,10 @@ export default function Navbar() {
             </a>
           ))}
 
-          {/* ── Bouton CV ── */}
-          <a
-            href="/cv"
-            target="_blank"
-            rel="noreferrer"
-            className="nav-cv-btn"
-          >
+          {/* ── Bouton CV — utilise button pour éviter les conflits ── */}
+          <button className="nav-cv-btn" onClick={openCV}>
             Mon CV
-          </a>
+          </button>
         </div>
 
         <button
@@ -78,16 +80,10 @@ export default function Navbar() {
           </a>
         ))}
 
-        {/* Lien CV aussi dans le menu mobile */}
-        <a
-          href="/cv"
-          target="_blank"
-          rel="noreferrer"
-          className="nav-cv-btn"
-          onClick={handleLink}
-        >
+        {/* Bouton CV dans le menu mobile aussi */}
+        <button className="nav-cv-btn" onClick={openCV}>
           Mon CV
-        </a>
+        </button>
       </div>
     </>
   );

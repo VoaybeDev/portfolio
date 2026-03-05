@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect } from 'react';
 import './CV.css';
 
@@ -22,15 +21,9 @@ export default function CV({ onClose }) {
 
   const handlePrint = () => window.print();
 
-  // Ferme l'onglet et retourne au portfolio
+  // ✅ Ferme l'onglet CV et retourne au portfolio
   const handleClose = () => {
-    if (window.opener) {
-      window.close();
-    } else if (onClose) {
-      onClose();
-    } else {
-      window.history.back();
-    }
+    window.close(); // ferme l'onglet ouvert via window.open()
   };
 
   return (
