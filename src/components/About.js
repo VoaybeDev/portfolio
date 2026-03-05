@@ -10,34 +10,31 @@ export default function About() {
         <div className="about-grid">
           <div className="about-text">
             <p>
-              Je m'appelle <strong>RALAIJOMA Fanambinantsoa Jean Baptiste</strong>,
-              développeur de 23 ans basé à Fianarantsoa, Madagascar. J'ai terminé
-              ma Licence en développement d'applications à l'
+              Développeur Full Stack de <strong>23 ans</strong> basé à Fianarantsoa, Madagascar,
+              diplômé en développement d'applications de l'
               <strong>École de Management et d'Innovation Technologique (EMIT Fianarantsoa)</strong>.
             </p>
             <p>
-              Je suis spécialisé dans la création d'applications web et mobiles
-              avec un intérêt particulier pour les <strong>technologies modernes</strong>
-              et les solutions innovantes. Fort d'une solide expérience en gestion
-              de bases de données MySQL et en conception d'architectures de données.
+              Je conçois des applications web et mobiles performantes en m'appuyant
+              sur des <strong>technologies modernes</strong> — React, Next.js, Laravel —
+              avec une expertise solide en bases de données relationnelles MySQL
+              et en architecture logicielle.
             </p>
             <p>
-              Je possède également des compétences en{' '}
-              <strong>collecte de données sur le terrain</strong>, ce qui me permet
-              d'avoir une approche complète du cycle de vie des données, de leur
-              collecte à leur exploitation.
+              Mon parcours inclut également une expérience terrain en{' '}
+              <strong>collecte et traitement de données</strong>,
+              ce qui me confère une vision bout-en-bout du cycle de vie de l'information,
+              de sa capture à son exploitation.
             </p>
           </div>
           <div className="info-card">
             {[
-              { key: 'Nom complet', val: 'RALAIJOMA Fanambinantsoa Jean Baptiste' },
-              { key: 'Date de naissance', val: '06 / 09 / 2002' },
-              { key: 'Lieu de naissance', val: 'Ikalamavony' },
-              { key: 'Adresse', val: 'Ivory avaratra, Fianarantsoa' },
-              { key: 'Email', val: 'mbinanafana1@gmail.com', isLink: true },
-              { key: 'Telephone', val: '+261 38 36 683 36' },
-              { key: 'Disponibilite', val: '✓ Disponible', highlight: true },
-              { key: 'Langues', val: 'FR · EN · MG' },
+              { key: 'Nom complet',     val: 'RALAIJOMA Fanambinantsoa Jean Baptiste' },
+              { key: 'Adresse',         val: 'Ivory avaratra, Fianarantsoa' },
+              { key: 'Email',           val: 'mbinanafana1@gmail.com', isLink: true },
+              { key: 'Telephone',       val: '+261 38 36 683 36' },
+              { key: 'Disponibilite',   val: '✓ Disponible', highlight: true },
+              { key: 'Langues',         val: 'FR · EN · MG' },
             ].map((r) => (
               <div className="info-row" key={r.key}>
                 <span className="info-key">{r.key}</span>
