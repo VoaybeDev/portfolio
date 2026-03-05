@@ -18,23 +18,23 @@ export default function Hero() {
   };
 
   const handleOver = (e) => {
-    e.currentTarget.style.background = 'rgba(110,240,200,0.12)';
-    e.currentTarget.style.borderColor = 'var(--accent)';
-    e.currentTarget.style.transform = 'translateY(-2px)';
-    e.currentTarget.style.boxShadow = '0 8px 24px rgba(110,240,200,0.15)';
+    e.currentTarget.style.background   = 'rgba(110,240,200,0.12)';
+    e.currentTarget.style.borderColor  = 'var(--accent)';
+    e.currentTarget.style.transform    = 'translateY(-2px)';
+    e.currentTarget.style.boxShadow    = '0 8px 24px rgba(110,240,200,0.15)';
   };
 
   const handleOut = (e) => {
-    e.currentTarget.style.background = 'rgba(110,240,200,0.05)';
-    e.currentTarget.style.borderColor = 'rgba(110,240,200,0.4)';
-    e.currentTarget.style.transform = 'translateY(0)';
-    e.currentTarget.style.boxShadow = 'none';
+    e.currentTarget.style.background   = 'rgba(110,240,200,0.05)';
+    e.currentTarget.style.borderColor  = 'rgba(110,240,200,0.4)';
+    e.currentTarget.style.transform    = 'translateY(0)';
+    e.currentTarget.style.boxShadow    = 'none';
   };
 
   const stats = [
-    { num: '23', label: 'Ans' },
-    { num: '6+', label: 'Projets deployes' },
-    { num: '3', label: 'Langues parlees' },
+    { num: '23',  label: 'Ans'              },
+    { num: '6+',  label: 'Projets deployes' },
+    { num: '3',   label: 'Langues parlees'  },
   ];
 
   return (
@@ -52,8 +52,17 @@ export default function Hero() {
         </p>
         <div className="hero-actions">
           <a href="#projects" className="btn btn-primary">Voir mes projets →</a>
-          <a href="#contact" className="btn btn-outline">Me contacter</a>
-          <a href="/cv-jean-baptiste.pdf" download="CV-Jean-Baptiste-Ralaijoma.pdf" style={cvStyle} onMouseOver={handleOver} onMouseOut={handleOut}>
+          <a href="#contact"  className="btn btn-outline">Me contacter</a>
+
+          {/* ── Bouton CV → ouvre la page /cv (nouveau CV neon) ── */}
+          <a
+            href="/cv"
+            target="_blank"
+            rel="noreferrer"
+            style={cvStyle}
+            onMouseOver={handleOver}
+            onMouseOut={handleOut}
+          >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
               <polyline points="7 10 12 15 17 10" />
