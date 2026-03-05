@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import '../CV.css';
+import './CV.css';
 
 export default function CV({ onClose }) {
   const sheetRef = useRef();
