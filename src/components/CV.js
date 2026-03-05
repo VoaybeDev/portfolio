@@ -1,7 +1,3 @@
-// ============================================
-//  CV.js — coller dans : src/components/CV.js
-// ============================================
-
 import React, { useRef, useEffect } from 'react';
 import '../CV.css';
 
