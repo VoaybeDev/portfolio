@@ -34,28 +34,9 @@ body::before {
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
 
-/* ── Cursor ── */
-.cursor {
-  width: 12px; height: 12px;
-  background: var(--accent);
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  mix-blend-mode: difference;
-  transition: width .2s, height .2s;
-}
-.cursor-ring {
-  width: 36px; height: 36px;
-  border: 1.5px solid var(--accent);
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%, -50%);
-  opacity: 0.5;
-}
+/* ── Cursor (smoke via canvas — géré par useSmokeCursor.js) ── */
+/* Les classes .cursor et .cursor-ring ne sont plus utilisées */
+/* Le canvas est injecté dynamiquement par le hook             */
 
 /* ── Section base ── */
 .section-wrapper {
@@ -159,30 +140,23 @@ body::before {
   text-transform: uppercase;
   font-family: inherit;
   white-space: nowrap;
-  cursor: pointer;
-
-  /* Apparence */
+  cursor: none;
   color: var(--bg, #0a0a0f);
   background: var(--accent);
   border: none;
   border-radius: 4px;
   padding: .42rem 1.1rem;
-
-  /* Glow subtil */
-  box-shadow: 0 0 14px rgba(var(--accent-rgb, 201,168,76), .35);
-
+  box-shadow: 0 0 14px rgba(110,240,200,.35);
   transition: background .2s, box-shadow .2s, transform .15s;
 }
-
 .nav-cv-btn:hover {
   background: var(--accent);
-  box-shadow: 0 0 24px rgba(var(--accent-rgb, 201,168,76), .65);
+  box-shadow: 0 0 24px rgba(110,240,200,.65);
   transform: translateY(-1px);
 }
-
 .nav-cv-btn:active {
   transform: translateY(0);
-  box-shadow: 0 0 10px rgba(var(--accent-rgb, 201,168,76), .4);
+  box-shadow: 0 0 10px rgba(110,240,200,.4);
 }
 
 /* ── Version mobile (dans .nav-mobile) ── */
@@ -590,7 +564,6 @@ textarea { height: 120px; resize: vertical; }
    ════════════════════════════ */
 @media (max-width: 768px) {
   body { cursor: auto; }
-  .cursor, .cursor-ring { display: none; }
 
   /* Navbar */
   .navbar { padding: 1rem 1.5rem; }
