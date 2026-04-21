@@ -1,5 +1,13 @@
 const projects = [
   {
+    icon: '🗺️',
+    name: 'Carte Météo Madagascar',
+    desc: 'Carte choroplèthe interactive de Madagascar avec données météo en temps réel via OpenWeatherMap. Visualisation des 22 régions colorées par température.',
+    stack: ['React', 'Leaflet.js', 'GeoJSON', 'OpenWeatherMap', 'Vite'],
+    url: 'https://madagascar-weather-map.vercel.app',
+    screenshot: '/screenshots/weather-map.png',
+  },
+  {
     icon: '💬',
     name: 'Real-Time Chat App',
     desc: 'Application de messagerie instantanee avec notifications en temps reel et authentification securisee.',
@@ -62,7 +70,6 @@ export default function Projects() {
           {projects.map((p) => (
             <a key={p.name} href={p.url} target="_blank" rel="noreferrer" className="project-card" style={{ padding: '0', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
 
-              {/* Screenshot */}
               <div style={{ position: 'relative', width: '100%', height: '180px', overflow: 'hidden', flexShrink: 0 }}>
                 <img
                   src={p.screenshot}
@@ -78,14 +85,12 @@ export default function Projects() {
                   onMouseOver={(e) => { e.currentTarget.style.transform = 'scale(1.05)'; }}
                   onMouseOut={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
                 />
-                {/* Overlay gradient */}
                 <div style={{
                   position: 'absolute',
                   inset: 0,
                   background: 'linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.7) 100%)',
                   pointerEvents: 'none',
                 }} />
-                {/* Icon flottant */}
                 <div style={{
                   position: 'absolute',
                   top: '0.75rem',
@@ -99,7 +104,6 @@ export default function Projects() {
                 }}>
                   {p.icon}
                 </div>
-                {/* Lien flottant */}
                 <div style={{
                   position: 'absolute',
                   top: '0.75rem',
@@ -117,7 +121,6 @@ export default function Projects() {
                 </div>
               </div>
 
-              {/* Contenu */}
               <div style={{ padding: '1.25rem 1.5rem 1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem', flex: 1 }}>
                 <div className="project-name">{p.name}</div>
                 <p className="project-desc" style={{ margin: 0 }}>{p.desc}</p>
